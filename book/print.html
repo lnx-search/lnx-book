@@ -1,0 +1,695 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Getting started with lnx</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="An introduction to lnx covering setup, usage and optimisation.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/installing.html"><strong aria-hidden="true">1.1.</strong> Installing</a></li><li class="chapter-item expanded "><a href="getting_started/running.html"><strong aria-hidden="true">1.2.</strong> Running</a></li><li class="chapter-item expanded "><a href="getting_started/indexes.html"><strong aria-hidden="true">1.3.</strong> Indexes</a></li><li class="chapter-item expanded "><a href="getting_started/index_transactions.html"><strong aria-hidden="true">1.4.</strong> Index Transactions</a></li><li class="chapter-item expanded "><a href="getting_started/documents.html"><strong aria-hidden="true">1.5.</strong> Documents</a></li><li class="chapter-item expanded "><a href="getting_started/searching.html"><strong aria-hidden="true">1.6.</strong> Searching An Index</a></li><li class="chapter-item expanded "><a href="getting_started/auth.html"><strong aria-hidden="true">1.7.</strong> Securing Your System</a></li><li class="chapter-item expanded "><a href="getting_started/next_steps.html"><strong aria-hidden="true">1.8.</strong> Next Steps</a></li></ol></li><li class="chapter-item expanded "><a href="optimising.html"><strong aria-hidden="true">2.</strong> Optimising</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Getting started with lnx</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p align="center">
+  <img width="40%" src="https://github.com/ChillFish8/lnx/raw/master/assets/logo.png" alt="Lust Logo">
+</p>
+<h1 align="center">Learning To Master LNX</h1>
+<p align="center">
+  <a href="https://github.com/ChillFish8/lnx/stargazers"><img src="https://img.shields.io/github/stars/ChillFish8/lnx"/></a>
+  <a href="hhttps://github.com/ChillFish8/lnx/issues"><img src="https://img.shields.io/github/issues/ChillFish8/lnx"/></a>
+  <a href="https://github.com/ChillFish8/lnx/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ChillFish8/lnx"/></a>
+  <a href="https://book.lnx.rs"><img src="https://img.shields.io/badge/Book-alive-sucess"/></a>
+</p>
+<p align="center">An ultra-fast, adaptable deployment of the tantivy search engine via REST.</p>
+<p align="center">
+    <a href="getting_started/installing.html">Getting Started</a>
+    |
+    <a href="/optimsing.html">Optimising</a>
+</p><div style="break-before: page; page-break-before: always;"></div><h1 id="installing"><a class="header" href="#installing">Installing</a></h1>
+<p>Setting up lnx is pretty simple overall, you will want either a copy of the docker image
+or build from source to start using it.</p>
+<h2 id="building-from-source"><a class="header" href="#building-from-source">Building from source</a></h2>
+<p>You will need a newish version of rust for this, this project was built on rustc <code>rustc 1.52.1</code>
+to be specific so any version beyond this should be alright.</p>
+<ul>
+<li>Download the file via <code>git clone https://github.com/ChillFish8/lnx.git</code> and enter the downloaded 
+folder.</li>
+<li>Run <code>cargo build --release</code></li>
+<li>Extract the exported binary from the <code>target/release</code> folder.</li>
+</ul>
+<p><em>alternatively you can use <code>cargo run --release -- &lt;flags&gt;</code> if you want to avoid the 
+job of extracting the built binary</em></p>
+<h2 id="running-from-docker"><a class="header" href="#running-from-docker">Running from docker</a></h2>
+<p>Docker images are pre-built following the <code>master</code> branch, this becomes the <code>latest</code>
+docker image tag.</p>
+<h4 id="running-via-docker-cli"><a class="header" href="#running-via-docker-cli">Running via docker CLI</a></h4>
+<pre><code class="language-bash">docker run chillfish8/lnx:latest -p &quot;8000:8000&quot; -e &quot;AUTHORIZATION_KEY=hello&quot; -e &quot;LOG_LEVEL=info&quot; 
+</code></pre>
+<p><em>Note: Running without a persistent volume will mean no data will be kept
+between a restart, if you intend on deploying this it is <strong>HIGHLY</strong> advised
+you mount a volume.</em></p>
+<h4 id="running-via-docker-compose"><a class="header" href="#running-via-docker-compose">Running via docker-compose</a></h4>
+<pre><code class="language-yaml">version: '3'
+
+services:
+    lnx:
+      image: chillfish8/lnx:latest
+      ports:
+        - &quot;8000:8000&quot;
+      volumes:
+        - &quot;/my/dir:/lib/lnx&quot; 
+      environment:
+        - AUTHORIZATION_KEY=hello
+        - LOG_LEVEL=info
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running"><a class="header" href="#running">Running</a></h1>
+<p>Running a default version of lnx can be done simply using the following commands:</p>
+<h4 id="running-1"><a class="header" href="#running-1">Running</a></h4>
+<pre><code>lnx &lt;flags&gt;
+</code></pre>
+<p>This will start the sever in a default configuration.</p>
+<p><em>NOTE: It is generally recommend to customise the running on lnx for production and optimum systems,
+see <a href="getting_started//optimising"><strong>optimising lnx</strong></a> for information on why it matters for performance sake.</em> </p>
+<h4 id="help"><a class="header" href="#help">Help</a></h4>
+<pre><code>lnx --help
+</code></pre>
+<p>This will bring up a detailed help command for 
+all CLI options (including environment options.)</p>
+<h2 id="optional-flags"><a class="header" href="#optional-flags">Optional Flags</a></h2>
+<p>lnx provides a wide set of command line arguments to customise the running
+of the server.</p>
+<h3 id="authentication-key"><a class="header" href="#authentication-key">Authentication Key</a></h3>
+<p>If specified this will require an authentication key on each request. </p>
+<p>Generally, it's recommended to have this in a production environment.</p>
+<p>As CLI:</p>
+<pre><code>-a, --authentication-key &lt;authentication-key&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>AUTHENTICATION_KEY=&lt;key&gt;
+</code></pre>
+<h3 id="server-host"><a class="header" href="#server-host">Server Host</a></h3>
+<p>The host to bind to (normally: '127.0.0.1' or '0.0.0.0'.) </p>
+<p>The default is <code>127.0.0.1</code></p>
+<p>As CLI:</p>
+<pre><code>-h, --host &lt;host&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>HOST=&lt;host&gt;
+</code></pre>
+<h3 id="server-port"><a class="header" href="#server-port">Server Port</a></h3>
+<p>The port to bind the server to.</p>
+<p>The default is <code>8000</code></p>
+<p>As CLI:</p>
+<pre><code>-p, --port &lt;port&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>PORT=&lt;port&gt;
+</code></pre>
+<h3 id="log-file"><a class="header" href="#log-file">Log File</a></h3>
+<p>A optional file to send persistent logs.</p>
+<p>This should be given as a file path.</p>
+<p>As CLI:</p>
+<pre><code>--log-file &lt;log-file&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>LOG_FILE=&lt;log-file&gt;
+</code></pre>
+<h3 id="log-level"><a class="header" href="#log-level">Log Level</a></h3>
+<p>The log level filter, any logs that are above this level wont be displayed.</p>
+<p>Defaults to <code>info</code></p>
+<p>As CLI:</p>
+<pre><code>--log-level &lt;log-level&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>LOG_LEVEL=&lt;log-level&gt;
+</code></pre>
+<h3 id="pretty-logs"><a class="header" href="#pretty-logs">Pretty Logs</a></h3>
+<p>An optional bool to use ASNI colours for log levels. 
+You probably want to disable this if using file based logging.</p>
+<p>Defaults to <code>true</code></p>
+<p>As CLI:</p>
+<pre><code>--pretty-logs &lt;pretty-logs&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>PRETTY_LOGS=&lt;pretty-logs&gt;
+</code></pre>
+<h3 id="pretty-logs-1"><a class="header" href="#pretty-logs-1">Pretty Logs</a></h3>
+<p>An optional bool to use ASNI colours for log levels. 
+You probably want to disable this if using file based logging.</p>
+<p>Defaults to <code>true</code></p>
+<p>As CLI:</p>
+<pre><code>--pretty-logs &lt;pretty-logs&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>PRETTY_LOGS=&lt;pretty-logs&gt;
+</code></pre>
+<h3 id="runtime-threads"><a class="header" href="#runtime-threads">Runtime Threads</a></h3>
+<p>The number of threads to use for the <a href="https://tokio.rs">tokio</a> runtime.</p>
+<p>If this is not set, the number of logical cores on the machine is used.</p>
+<p>As CLI:</p>
+<pre><code>-t, --runtime-threads &lt;runtime-threads&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>RUNTIME_THREADS=&lt;runtime-threads&gt;
+</code></pre>
+<h3 id="tls-cert-file"><a class="header" href="#tls-cert-file">TLS Cert File</a></h3>
+<p>If specified this will be used in the TLS config for HTTPS. </p>
+<p>If this is specified the <a href="getting_started//getting_started/running.html#tls-key-file">TLS Key File</a> must also be given.</p>
+<p>As CLI:</p>
+<pre><code>--tls-cert-file &lt;tls-cert-file&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>TLS_CERT_FILE=&lt;tls-cert-file&gt;
+</code></pre>
+<h3 id="tls-key-file"><a class="header" href="#tls-key-file">TLS Key File</a></h3>
+<p>If specified this will be used in the TLS config for HTTPS. </p>
+<p>If this is specified the <a href="getting_started//getting_started/running.html#tls-cert-file">TLS Cert File</a> must also be given.</p>
+<p>As CLI:</p>
+<pre><code>--tls-key-file &lt;tls-key-file&gt;
+</code></pre>
+<p>As environment key:</p>
+<pre><code>TLS_KEY_FILE=&lt;tls-key-file&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-an-index"><a class="header" href="#creating-an-index">Creating An Index</a></h1>
+<p>Creating an index is fairly simple, once made lnx will it as a persistent config so that you 
+dont need to continuously keep redefining it.</p>
+<h3 id="endpoints-required"><a class="header" href="#endpoints-required">Endpoints Required</a></h3>
+<pre><code>POST /indexes
+</code></pre>
+<h3 id="gotcha-moments"><a class="header" href="#gotcha-moments">Gotcha Moments</a></h3>
+<p>Creating an index can create quite a few gotcha moments so its important to understand the behaviour
+of the system before ramming your head into a wall wondering why things arent updating or being
+destroyed.</p>
+<ul>
+<li>This system is append / delete only, to update an index it must be deleted and re-made, all 
+data is lost in the process. This is because the index is schema-full and requires fields exist
+if define (This may change in future releases.)</li>
+<li>Creating indexes are <strong>VERY HEAVY</strong> operations, not only are you acquiring a global lock across
+all indexes stopping anything else completing operations but you are also spawning and creating
+several threads and thread pools (more on this later.) They should not be made randomly during 
+usage and should not be made via some user input <em>THIS WILL CAUSE SERIOUS ISSUES OTHERWISE</em>.</li>
+<li>Deleting indexes clear all data stored, this means any previously uploaded documents will be
+removed.</li>
+<li>The <code>max_concurrency</code> determines the amount of readers proportionally, and 
+the <code>reader_threads</code> determines the amount of threads each reader gets, 
+therefore you spawn at least <code>max_concurrency</code> x <code>reader_threads</code> + <code>writer_threads</code> + <code>1</code> (for writer thread)</li>
+</ul>
+<h3 id="support-field-data-types"><a class="header" href="#support-field-data-types">Support Field Data Types</a></h3>
+<ul>
+<li><code>string</code> This is similar to <code>text</code> but wont be indexed. (Supports <code>stored</code> bool)</li>
+<li><code>text</code> This is similar to <code>string</code> but will be indexed. (Supports <code>stored</code> bool)</li>
+<li><code>bytes</code> A arbitrary bytes field with given (Supports <a href="getting_started//getting_started/creating_a_index.html#bytes-options">BytesOptions</a>)</li>
+<li><code>f64</code> A 64 bit floating point integer field. (Supports <a href="getting_started//getting_started/creating_a_index.html#int-options">IntOptions</a>)</li>
+<li><code>i64</code> A 64 bit signed integer field. (Supports <a href="getting_started//getting_started/creating_a_index.html#int-options">IntOptions</a>)</li>
+<li><code>u64</code> A 64 bit unsigned point integer field. (Supports <a href="getting_started//getting_started/creating_a_index.html#int-options">IntOptions</a>)</li>
+<li><code>date</code> A UTC datetime field, stored as a u64 integer. (Supports <a href="getting_started//getting_started/creating_a_index.html#int-options">IntOptions</a>)</li>
+</ul>
+<h4 id="int-options"><a class="header" href="#int-options">Int Options</a></h4>
+<p>If a field is <em>in italic</em> it's optional and not required.</p>
+<ul>
+<li>
+<p><code>indexed</code>: bool - Whether or not to index this field. 
+Setting an integer as indexed will generate a posting list for each value taken by the integer.</p>
+</li>
+<li>
+<p><em><code>fast</code>: 'single' or 'multi'</em> - Set the field as a fast field with a
+given cardinality which makes it either a single-value or multi-value field. 
+Fast fields are designed for random access.
+Access time are similar to a random lookup in an array.
+If more than one value is associated to a fast field, only the last one is kept.</p>
+</li>
+<li>
+<p><code>stored</code>: bool - Set the field as stored.
+Only the fields that are set as <em>stored</em> are persisted into the store.</p>
+</li>
+</ul>
+<h4 id="bytes-options"><a class="header" href="#bytes-options">Bytes Options</a></h4>
+<p>If a field is <em>in italic</em> it's optional and not required.</p>
+<ul>
+<li>
+<p><code>indexed</code>: bool - Whether or not to index this field. 
+Setting an integer as indexed will generate a posting list for each value taken by the integer.</p>
+</li>
+<li>
+<p><em><code>fast</code>: bool</em> - Set the field as a single-valued fast field. 
+Fast fields are designed for random access.
+Access time are similar to a random lookup in an array.
+If more than one value is associated to a fast field, only the last one is kept.</p>
+</li>
+<li>
+<p><code>stored</code>: bool - Set the field as stored.
+Only the fields that are set as <em>stored</em> are persisted into the store.</p>
+</li>
+</ul>
+<h3 id="the-request-payload"><a class="header" href="#the-request-payload">The Request Payload</a></h3>
+<p>The <code>/indexes</code> endpoint expects a POST request with a <code>application/json</code> body, and example 
+payload looks like:</p>
+<pre><code class="language-js">{
+    &quot;name&quot;: &quot;my-index&quot;,  // The name of the index, must not contain '/'
+
+    &quot;writer_buffer&quot;: 6000000,  // The buffer size in bytes for the writer to use.
+    &quot;writer_threads&quot;: 1,    // The number of threads for the index writer to use.
+
+    &quot;reader_threads&quot;: 1,   // The number of threads for each reader to use. 
+    
+    &quot;max_concurrency&quot;: 10,  // The maximum amount of searches / readers at one time.
+    &quot;search_fields&quot;: [   // The list of fields that are used when searching.
+        &quot;title&quot; 
+    ],
+    
+    // The backend to use, choices of 'memory', 'tempdir', and 'filesystem'
+    &quot;storage_type&quot;: {   
+        &quot;mode&quot;: &quot;memory&quot;,
+        // if we were using 'filesystem' then we would need to give a path.
+        // &quot;path&quot;: &quot;/store&quot;,
+    },  
+    
+    // The actual fields for this schema.
+    // NOTE: not every field defined is used to search.
+    &quot;fields&quot;: {   
+        &quot;title&quot;: {
+            // We defined the field type as `text` this means it will be indexed.
+            &quot;type&quot;: &quot;text&quot;,   
+          
+            // This will be stored, compressed and returned when returning data.
+            &quot;stored&quot;: true,   
+        },
+        &quot;description&quot;: {
+           &quot;type&quot;: &quot;text&quot;,  
+           &quot;stored&quot;: true,
+        },
+        &quot;id&quot;: {
+            // Types supported include: u64, i64, f64, date, text, string, bytes
+            &quot;type&quot;: &quot;u64&quot;,    
+    
+            // Optionally if true this will be indexed (Only for int fields and date)
+            &quot;indexed&quot;: true,  
+            &quot;stored&quot;: true,   
+  
+            // Integer fields can be defined as fast fields, this allows us to apply
+            // some additional optimisations by telling tantivy if it's a single value
+            // or multi-value field.
+            &quot;fast&quot;: &quot;single&quot;, 
+        },    
+    },
+    
+    // Boost fields are what we can use to adjust how much weight we give to
+    // specific fields to adjust how much bias there is to each field.
+    &quot;boost_fields&quot;: {   
+      &quot;title&quot;: 2.0,     
+      &quot;description&quot;: 0.8,
+    }
+}
+</code></pre>
+<h3 id="success"><a class="header" href="#success">Success!</a></h3>
+<p>Providing the given payload data is valid you have successfully made an index.</p>
+<p>This can error if you assign more threads than your system can reasonably assign.</p>
+<h3 id="performance-note"><a class="header" href="#performance-note">Performance Note</a></h3>
+<p>More threads != faster, you should test and benchmark different ratios of reader threads
+and concurrency as that will have the biggest affect on performance.</p>
+<h3 id="deleting-an-index"><a class="header" href="#deleting-an-index">Deleting An Index</a></h3>
+<p>An index can be deleted via sending a request to the following endpoint:</p>
+<pre><code>DELETE /indexes/:index_name
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transactions"><a class="header" href="#transactions">Transactions</a></h1>
+<p>Transactions are one of the most important things in lnx, they control what data is seen by
+the reader and what data is actually fully processed and saved.</p>
+<p>The core concept of the transactions work on the same basis of tradition database transactions
+with a one major difference:</p>
+<ul>
+<li>
+<p>There <em>should</em> only ever be <strong>ONE</strong> system interacting with a writer for a specific index at a time.
+The system processes writes in single a queue, so if one system adds a document and another commits
+then the document will be finalized and flushed to disk.</br> 
+<strong>It is highly recommended to wrap the writing endpoints in a lock</strong></p>
+</li>
+<li>
+<p>Transactions are implicit vs explicit meaning you dont declare a transaction
+you simple call commit and rollback respectively which apply their relevant affects
+on writes made <strong>since the last commit</strong> once something is committed it cannot be rolled back.</p>
+</li>
+</ul>
+<h3 id="transaction-endpoints"><a class="header" href="#transaction-endpoints">Transaction Endpoints</a></h3>
+<p>Commits any recent changes since the last commit.
+This will finalise any changes and flush to disk.</p>
+<pre><code>POST /indexes/:index_name/commit
+</code></pre>
+<p>Reverts any recent changes since the last commit.</p>
+<pre><code>POST /indexes/:index_name/rollback
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="documents"><a class="header" href="#documents">Documents</a></h1>
+<p>Documents can only be added or removed, not updated.
+This is preferred to be done explicitly hence no update endpoint.</p>
+<h3 id="endpoints-required-1"><a class="header" href="#endpoints-required-1">Endpoints Required</a></h3>
+<p>Adds one or more documents to the given index.
+This can either return immediately or wait for all operations 
+to be submitted depending on the <code>wait</code> query parameter.</p>
+<pre><code>POST /indexes/:index_name/documents?wait=&lt;bool&gt;
+</code></pre>
+<p>Deletes any documents matching the set of given terms. (Requires a JSON body.)</p>
+<pre><code>DELETE /indexes/:index_name/documents
+</code></pre>
+<p>Deleting all documents (This requires no payload): </p>
+<pre><code>DELETE /indexes/:index_name/documents/clear
+</code></pre>
+<h2 id="adding-a-document"><a class="header" href="#adding-a-document">Adding a document</a></h2>
+<p>Adding a document is relatively simple, you can either add a single
+document represented as a JSON object or you can submit a array of object.</p>
+<p>Every document is checked for the required fields, if any docs are missing
+fields the <em>entire</em> request is rejected.</p>
+<pre><code>POST /indexes/:index_name/documents?wait=&lt;bool&gt;
+</code></pre>
+<p>If <code>wait=true</code> (recommended) the system will wait for all operations (one operation per doc)
+to be submitted before returning. The writer has a 20 operation buffer limit, this can be
+useful for client backpressure waiting for when to send more documents or not.</p>
+<p>Not waiting can quickly add a lot of load on the server which may be un-desirable.</p>
+<h4 id="representing-data-types"><a class="header" href="#representing-data-types">Representing Data Types</a></h4>
+<p><em>Most</em> data types can be represented as raw </p>
+<h4 id="example-body-singular"><a class="header" href="#example-body-singular">Example Body (Singular)</a></h4>
+<pre><code class="language-js">{
+    &quot;title&quot;: {
+        // both `string` and `text` fields use the `text` data type representation.
+        &quot;type&quot;: &quot;text&quot;,   
+        &quot;value&quot;: &quot;Hello, World&quot;,
+    },
+    &quot;some_data&quot;: {
+        &quot;type&quot;: &quot;bytes&quot;,
+        // Bytes are encoded as a standard base64 string.
+        &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
+    },
+    &quot;some_datetime&quot;: {
+        &quot;type&quot;: &quot;date&quot;,
+        // Datetime fields are handled as a Timezone naive UTC timestamp.
+        &quot;value&quot;: 2308762358023
+    },
+}
+</code></pre>
+<h4 id="example-body-multiple"><a class="header" href="#example-body-multiple">Example Body (Multiple)</a></h4>
+<pre><code class="language-js">[
+    {
+        &quot;title&quot;: {
+            &quot;type&quot;: &quot;text&quot;,   
+            &quot;value&quot;: &quot;Hello, World&quot;,
+        },
+        &quot;some_data&quot;: {
+            &quot;type&quot;: &quot;bytes&quot;,
+            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
+        },
+        &quot;some_datetime&quot;: {
+            &quot;type&quot;: &quot;date&quot;,
+            &quot;value&quot;: 2308762358023
+        },
+    },
+    {
+        &quot;title&quot;: {
+            &quot;type&quot;: &quot;text&quot;,   
+            &quot;value&quot;: &quot;Hello, World 2&quot;,
+        },
+        &quot;some_data&quot;: {
+            &quot;type&quot;: &quot;bytes&quot;,
+            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
+        },
+        &quot;some_datetime&quot;: {
+            &quot;type&quot;: &quot;date&quot;,
+            &quot;value&quot;: 2308762358023
+        },
+    },
+]
+</code></pre>
+<h2 id="deleting-documents"><a class="header" href="#deleting-documents">Deleting Documents</a></h2>
+<p>Docs can only be deleted via terms, it's up to you to make sure a given term is
+unique otherwise multiple docs can be deleted via this method.</p>
+<pre><code>DELETE /indexes/:index_name/documents
+</code></pre>
+<h3 id="json-payload"><a class="header" href="#json-payload">JSON Payload</a></h3>
+<pre><code class="language-json5">{
+    // Delete any document with the value 123454 for the `id` field.
+    // Make sure the type of the field aligns with the specified value type. 
+    &quot;id&quot;: {&quot;type&quot;: &quot;u64&quot;, &quot;value&quot;: 123454},
+
+    // Delete any document with the value 'bob' for the `name` field. 
+    &quot;name&quot;: {&quot;type&quot;: &quot;text&quot;, &quot;value&quot;: &quot;bob&quot;},
+}
+</code></pre>
+<h2 id="deleting-all-documents"><a class="header" href="#deleting-all-documents">Deleting All Documents</a></h2>
+<p>All docs can be cleared from the index via</p>
+<pre><code>DELETE /indexes/:index_name/documents/clear
+</code></pre>
+<h2 id="getting-a-specific-document"><a class="header" href="#getting-a-specific-document">Getting A Specific Document</a></h2>
+<p>Getting a specific document is generally not advised as it requires making sure
+the data segment is correct, so dont rely on a doc's reference address being the
+same over time. </p>
+<pre><code>GET /indexes/:index_name/documents/:document_id
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="searching-an-index"><a class="header" href="#searching-an-index">Searching An index</a></h1>
+<p>Once you've added documents to you're ready to start
+searching!</p>
+<p>lnx provides you with 3 major ways to query the index:</p>
+<ul>
+<li>(<code>mode=normal</code>) The tantivy query parse system, this is not typo tolerant
+but is very powerful for custom user queries, think log searches.</li>
+<li>(<code>mode=fuzzy</code>, DEFAULT) A fuzzy query, this ignores the custom query 
+system that the standard query parser would otherwise handle,
+but intern is typo tolerant.</li>
+<li>(<code>more=more-like-this</code>) Unlike the previous two options this takes a document
+reference address and produces documents similar to the given one.
+This is super useful for things like books etc... Wanting related items.</li>
+</ul>
+<h3 id="required-endpoints"><a class="header" href="#required-endpoints">Required Endpoints</a></h3>
+<pre><code>GET /indexes/:index_name/search
+</code></pre>
+<p><strong>Endpoint Query Parameters</strong></p>
+<ul>
+<li><code>query</code>* - A string query which is used to search documents.</li>
+<li><code>ref_document</code>** - A document id in the form of <segment>-<id>.</li>
+<li><code>mode</code> - The specified mode of the query. Out of <code>normal</code>, <code>fuzzy</code>, <code>more-like-this</code>.</li>
+<li><code>limit</code> - Limit the amount of results to return (Default: <code>20</code>)</li>
+<li><code>offset</code> - The offset to skip <code>n</code> documents before returning any. </li>
+<li><code>order_by</code> - The field to order content by. This must be a field existing in 
+the schema.</li>
+</ul>
+<p><code>*</code> = This is required for <code>normal</code> and <code>fuzzy</code> mode queries but not <code>more-like-this</code>.</br>
+<code>**</code> = This is required for <code>more-like-this</code> queries but not <code>normal</code> and <code>fuzzy</code>.</p>
+<h3 id="example-search-query"><a class="header" href="#example-search-query">Example Search Query</a></h3>
+<p>The bellow query searches out <code>movies</code> index with the query <code>hello, world</code>
+this will be matched in the <code>fuzzy</code> mode due to it being the default if not
+specified, we then limit it to <code>10</code> items.</p>
+<pre><code>GET /indexes/movies/search?limit=10&amp;query=hello, world
+</code></pre>
+<p>Our response can look something like this:</p>
+<pre><code class="language-js">{
+    &quot;data&quot;: {
+        // The total amount of documents matching the query
+        &quot;count&quot;: 0,
+
+        // The results of the query, the data returned is in the format of the
+        // schema.
+        &quot;hits&quot;: [],
+    
+        // The total time taken in seconds.
+        &quot;time_taken&quot;: 0.0007666     
+    },
+    &quot;status&quot;: 200
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="securing-your-system"><a class="header" href="#securing-your-system">Securing Your System</a></h1>
+<p>Generally, it is highly recommended that you enable token authorization for lnx
+although you might not intend for it to be exposed to the world, mistakes do happen.</p>
+<p>Luckily for you lnx provides you with a simple a customisable authorization permission
+system.</p>
+<h2 id="endpoints"><a class="header" href="#endpoints">Endpoints</a></h2>
+<p>All of these endpoints require the super use key if auth is enabled.</p>
+<p>See <a href="getting_started//getting_started/running.html#authentication-key"><em>the authentication key section</em></a></p>
+<p>Any displayed query parameters are required parameters, scroll further down
+for more info.</p>
+<pre><code>POST /admin/tokens/create?username=&lt;str&gt;
+</code></pre>
+<pre><code>POST /admin/tokens/revoke?token=&lt;token&gt;
+</code></pre>
+<pre><code>POST /admin/tokens/permissions?token=&lt;token&gt;
+</code></pre>
+<pre><code>DELETE /admin/tokens/clear
+</code></pre>
+<h3 id="extra-query-parameters"><a class="header" href="#extra-query-parameters">Extra Query Parameters</a></h3>
+<p>The <code>create</code> and  <code>permissions</code> both have a set of optional
+parameters and they match up with the permissions (<code>search</code>, <code>indexes</code>, <code>documents</code>)
+passing these parameters to these endpoints explicitly set or unset the permissions
+of the access token (by default they are all <code>false</code>).</p>
+<h2 id="permissions"><a class="header" href="#permissions">Permissions</a></h2>
+<p>The following permissions each have their own sections and endpoints that they
+affect, generally it is best to trust no one and only grant people
+the permissions they absolutely need <strong>ESPECIALLY</strong> the indexes permission which
+can have the potential to crash your server if abused.</p>
+<h4 id="search-permission"><a class="header" href="#search-permission">Search Permission</a></h4>
+<p><code>search</code> - This grants access to the endpoints described in the
+<a href="getting_started//getting_started/searching.html"><strong>Searching An Index</strong></a> section.</p>
+<h4 id="indexes-permission"><a class="header" href="#indexes-permission">Indexes Permission</a></h4>
+<p><code>indexes</code> - The most dangerous permission, this grants access to any operations
+listed in the <a href="getting_started//getting_started/indexes.html"><strong>Indexes</strong></a> section</p>
+<h4 id="documents-permission"><a class="header" href="#documents-permission">Documents Permission</a></h4>
+<p><code>documents</code> - This grants access to the endpoints described in the 
+<a href="getting_started//getting_started/documents.html"><strong>Documents</strong></a> section.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h1>
+<p>Congratz! You're ready to make full use of lnx
+for notes on performance and getting the most
+out of your system see <a href="getting_started//optimising.html"><strong>Optimising</strong></a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="optimising-for-your-use"><a class="header" href="#optimising-for-your-use">Optimising For Your Use</a></h1>
+<p><em>todo :)</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
