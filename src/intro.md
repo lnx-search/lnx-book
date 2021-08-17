@@ -12,7 +12,7 @@
 <p align="center">
     <a href="getting_started/installing.html">Getting Started</a>
     |
-    <a href="/optimsing.html">Optimising</a>
+    <a href="/optimising.html">Optimising</a>
 </p>
 <p align="center">An ultra-fast, adaptable deployment of the tantivy search engine via REST.</p>
 
