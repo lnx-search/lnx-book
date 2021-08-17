@@ -135,21 +135,37 @@
                 <div id="content" class="content">
                     <main>
                         <p align="center">
-  <img width="40%" src="https://github.com/ChillFish8/lnx/raw/master/assets/logo.png" alt="Lust Logo">
+  <img width="20%" src="https://github.com/ChillFish8/lnx/blob/master/assets/logo.png" alt="Lust Logo">
 </p>
-<h1 align="center">Learning To Master LNX</h1>
+<h1 id=""><a class="header" href="#"></a></h1>
 <p align="center">
   <a href="https://github.com/ChillFish8/lnx/stargazers"><img src="https://img.shields.io/github/stars/ChillFish8/lnx"/></a>
   <a href="hhttps://github.com/ChillFish8/lnx/issues"><img src="https://img.shields.io/github/issues/ChillFish8/lnx"/></a>
   <a href="https://github.com/ChillFish8/lnx/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ChillFish8/lnx"/></a>
   <a href="https://book.lnx.rs"><img src="https://img.shields.io/badge/Book-alive-sucess"/></a>
 </p>
-<p align="center">An ultra-fast, adaptable deployment of the tantivy search engine via REST.</p>
 <p align="center">
     <a href="getting_started/installing.html">Getting Started</a>
     |
     <a href="/optimsing.html">Optimising</a>
 </p>
+<p align="center">An ultra-fast, adaptable deployment of the tantivy search engine via REST.</p>
+<h3 id="-standing-on-the-shoulders-of-giants"><a class="header" href="#-standing-on-the-shoulders-of-giants">🌟 Standing On The Shoulders of Giants</a></h3>
+<p>lnx is built to no re-invent the wheel, it stands ontop of the <a href="https://tokio.rs"><strong>tokio-rs</strong></a> work-stealing runtime, <a href="https://github.com/tokio-rs/axum"><strong>axum</strong></a> a lightweight abstraction over <a href="https://github.com/hyperium/hyper"><strong>hyper-rs</strong></a> combined with the raw compute power of the <a href="https://github.com/tantivy-search/tantivy"><strong>tantivy search engine</strong></a>.</p>
+<p>Together this allows lnx to offer millisecond indexing on tens of thousands of document inserts at once (No more waiting around for things to get indexed!), Per index transactions and the ability to process searches like it's just another lookup on the hashtable 😲</p>
+<h3 id="-features"><a class="header" href="#-features">✨ Features</a></h3>
+<p>lnx although very new offers a wide range of features thanks to the ecosystem it stands on.</p>
+<ul>
+<li>🤓 <strong>Complex Query Parser.</strong></li>
+<li>❤️ <strong>Typo tollerant fuzzy queries.</strong></li>
+<li>🔥 <strong>More-Like-This queries.</strong></li>
+<li>Order by fields.</li>
+<li><em>Fast</em> indexing.</li>
+<li><em>Fast</em> Searching.</li>
+<li>Several Options for fine grain performance tuning.</li>
+<li>Multiple storage backends available for testing and developing.</li>
+</ul>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -170,6 +186,20 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
