@@ -383,11 +383,7 @@ payload looks like:</p>
     ],
     
     // The backend to use, choices of 'memory', 'tempdir', and 'filesystem'
-    &quot;storage_type&quot;: {   
-        &quot;mode&quot;: &quot;memory&quot;,
-        // if we were using 'filesystem' then we would need to give a path.
-        // &quot;path&quot;: &quot;/store&quot;,
-    },  
+    &quot;storage_type&quot;: &quot;memory&quot;,
     
     // The actual fields for this schema.
     // NOTE: not every field defined is used to search.
@@ -492,53 +488,20 @@ useful for client backpressure waiting for when to send more documents or not.</
 <p><em>Most</em> data types can be represented as raw </p>
 <h4 id="example-body-singular"><a class="header" href="#example-body-singular">Example Body (Singular)</a></h4>
 <pre><code class="language-js">{
-    &quot;title&quot;: {
-        // both `string` and `text` fields use the `text` data type representation.
-        &quot;type&quot;: &quot;text&quot;,   
-        &quot;value&quot;: &quot;Hello, World&quot;,
-    },
-    &quot;some_data&quot;: {
-        &quot;type&quot;: &quot;bytes&quot;,
-        // Bytes are encoded as a standard base64 string.
-        &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-    },
-    &quot;some_datetime&quot;: {
-        &quot;type&quot;: &quot;date&quot;,
-        // Datetime fields are handled as a Timezone naive UTC timestamp.
-        &quot;value&quot;: 2308762358023
-    },
+    &quot;title&quot;: [&quot;Hello, World&quot;],
+    &quot;description&quot;: [&quot;Welcome to the next generation system.&quot;]
 }
 </code></pre>
 <h4 id="example-body-multiple"><a class="header" href="#example-body-multiple">Example Body (Multiple)</a></h4>
 <pre><code class="language-js">[
     {
-        &quot;title&quot;: {
-            &quot;type&quot;: &quot;text&quot;,   
-            &quot;value&quot;: &quot;Hello, World&quot;,
-        },
-        &quot;some_data&quot;: {
-            &quot;type&quot;: &quot;bytes&quot;,
-            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-        },
-        &quot;some_datetime&quot;: {
-            &quot;type&quot;: &quot;date&quot;,
-            &quot;value&quot;: 2308762358023
-        },
+        &quot;title&quot;: [&quot;Hello, World&quot;],
+        &quot;description&quot;: [&quot;Welcome to the next generation system.&quot;]
     },
     {
-        &quot;title&quot;: {
-            &quot;type&quot;: &quot;text&quot;,   
-            &quot;value&quot;: &quot;Hello, World 2&quot;,
-        },
-        &quot;some_data&quot;: {
-            &quot;type&quot;: &quot;bytes&quot;,
-            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-        },
-        &quot;some_datetime&quot;: {
-            &quot;type&quot;: &quot;date&quot;,
-            &quot;value&quot;: 2308762358023
-        },
-    },
+        &quot;title&quot;: [&quot;Hello, World 2 &quot;],
+        &quot;description&quot;: [&quot;Welcome to the next generation system. Version 2&quot;]
+    }
 ]
 </code></pre>
 <h2 id="deleting-documents"><a class="header" href="#deleting-documents">Deleting Documents</a></h2>
@@ -605,14 +568,25 @@ specified, we then limit it to <code>10</code> items.</p>
 <pre><code class="language-js">{
     &quot;data&quot;: {
         // The total amount of documents matching the query
-        &quot;count&quot;: 0,
+        &quot;count&quot;: 1,
 
         // The results of the query, the data returned is in the format of the
         // schema.
-        &quot;hits&quot;: [],
-    
+        &quot;hits&quot;: [
+            {
+                &quot;doc&quot;: {
+                    &quot;description&quot;: [
+                        &quot;there once was a kid and yeah&quot;
+                    ],
+                    &quot;title&quot;: [
+                        &quot;hello, world&quot;
+                    ]
+                },
+                &quot;ref_address&quot;: &quot;1-0&quot;
+            }
+        ],
         // The total time taken in seconds.
-        &quot;time_taken&quot;: 0.0007666     
+        &quot;time_taken&quot;: 0.0001347
     },
     &quot;status&quot;: 200
 }

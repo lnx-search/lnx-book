@@ -173,14 +173,25 @@ specified, we then limit it to <code>10</code> items.</p>
 <pre><code class="language-js">{
     &quot;data&quot;: {
         // The total amount of documents matching the query
-        &quot;count&quot;: 0,
+        &quot;count&quot;: 1,
 
         // The results of the query, the data returned is in the format of the
         // schema.
-        &quot;hits&quot;: [],
-    
+        &quot;hits&quot;: [
+            {
+                &quot;doc&quot;: {
+                    &quot;description&quot;: [
+                        &quot;there once was a kid and yeah&quot;
+                    ],
+                    &quot;title&quot;: [
+                        &quot;hello, world&quot;
+                    ]
+                },
+                &quot;ref_address&quot;: &quot;1-0&quot;
+            }
+        ],
         // The total time taken in seconds.
-        &quot;time_taken&quot;: 0.0007666     
+        &quot;time_taken&quot;: 0.0001347
     },
     &quot;status&quot;: 200
 }

@@ -164,53 +164,20 @@ useful for client backpressure waiting for when to send more documents or not.</
 <p><em>Most</em> data types can be represented as raw </p>
 <h4 id="example-body-singular"><a class="header" href="#example-body-singular">Example Body (Singular)</a></h4>
 <pre><code class="language-js">{
-    &quot;title&quot;: {
-        // both `string` and `text` fields use the `text` data type representation.
-        &quot;type&quot;: &quot;text&quot;,   
-        &quot;value&quot;: &quot;Hello, World&quot;,
-    },
-    &quot;some_data&quot;: {
-        &quot;type&quot;: &quot;bytes&quot;,
-        // Bytes are encoded as a standard base64 string.
-        &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-    },
-    &quot;some_datetime&quot;: {
-        &quot;type&quot;: &quot;date&quot;,
-        // Datetime fields are handled as a Timezone naive UTC timestamp.
-        &quot;value&quot;: 2308762358023
-    },
+    &quot;title&quot;: [&quot;Hello, World&quot;],
+    &quot;description&quot;: [&quot;Welcome to the next generation system.&quot;]
 }
 </code></pre>
 <h4 id="example-body-multiple"><a class="header" href="#example-body-multiple">Example Body (Multiple)</a></h4>
 <pre><code class="language-js">[
     {
-        &quot;title&quot;: {
-            &quot;type&quot;: &quot;text&quot;,   
-            &quot;value&quot;: &quot;Hello, World&quot;,
-        },
-        &quot;some_data&quot;: {
-            &quot;type&quot;: &quot;bytes&quot;,
-            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-        },
-        &quot;some_datetime&quot;: {
-            &quot;type&quot;: &quot;date&quot;,
-            &quot;value&quot;: 2308762358023
-        },
+        &quot;title&quot;: [&quot;Hello, World&quot;],
+        &quot;description&quot;: [&quot;Welcome to the next generation system.&quot;]
     },
     {
-        &quot;title&quot;: {
-            &quot;type&quot;: &quot;text&quot;,   
-            &quot;value&quot;: &quot;Hello, World 2&quot;,
-        },
-        &quot;some_data&quot;: {
-            &quot;type&quot;: &quot;bytes&quot;,
-            &quot;value&quot;: &quot;eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ==&quot;
-        },
-        &quot;some_datetime&quot;: {
-            &quot;type&quot;: &quot;date&quot;,
-            &quot;value&quot;: 2308762358023
-        },
-    },
+        &quot;title&quot;: [&quot;Hello, World 2 &quot;],
+        &quot;description&quot;: [&quot;Welcome to the next generation system. Version 2&quot;]
+    }
 ]
 </code></pre>
 <h2 id="deleting-documents"><a class="header" href="#deleting-documents">Deleting Documents</a></h2>
