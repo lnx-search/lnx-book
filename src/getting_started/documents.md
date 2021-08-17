@@ -44,21 +44,8 @@ Not waiting can quickly add a lot of load on the server which may be un-desirabl
 #### Example Body (Singular)
 ```js
 {
-    "title": {
-        // both `string` and `text` fields use the `text` data type representation.
-        "type": "text",   
-        "value": "Hello, World",
-    },
-    "some_data": {
-        "type": "bytes",
-        // Bytes are encoded as a standard base64 string.
-        "value": "eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ=="
-    },
-    "some_datetime": {
-        "type": "date",
-        // Datetime fields are handled as a Timezone naive UTC timestamp.
-        "value": 2308762358023
-    },
+    "title": ["Hello, World"],
+    "description": ["Welcome to the next generation system."]
 }
 ```
 
@@ -66,33 +53,13 @@ Not waiting can quickly add a lot of load on the server which may be un-desirabl
 ```js
 [
     {
-        "title": {
-            "type": "text",   
-            "value": "Hello, World",
-        },
-        "some_data": {
-            "type": "bytes",
-            "value": "eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ=="
-        },
-        "some_datetime": {
-            "type": "date",
-            "value": 2308762358023
-        },
+        "title": ["Hello, World"],
+        "description": ["Welcome to the next generation system."]
     },
     {
-        "title": {
-            "type": "text",   
-            "value": "Hello, World 2",
-        },
-        "some_data": {
-            "type": "bytes",
-            "value": "eW91IGRpZCB0aGUgZWFzdGVyIGVnZywgaGF2ZSBhIGNvb2tpZQ=="
-        },
-        "some_datetime": {
-            "type": "date",
-            "value": 2308762358023
-        },
-    },
+        "title": ["Hello, World 2 "],
+        "description": ["Welcome to the next generation system. Version 2"]
+    }
 ]
 ```
 

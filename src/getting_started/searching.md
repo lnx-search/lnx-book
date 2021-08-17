@@ -42,14 +42,25 @@ Our response can look something like this:
 {
     "data": {
         // The total amount of documents matching the query
-        "count": 0,
+        "count": 1,
 
         // The results of the query, the data returned is in the format of the
         // schema.
-        "hits": [],
-    
+        "hits": [
+            {
+                "doc": {
+                    "description": [
+                        "there once was a kid and yeah"
+                    ],
+                    "title": [
+                        "hello, world"
+                    ]
+                },
+                "ref_address": "1-0"
+            }
+        ],
         // The total time taken in seconds.
-        "time_taken": 0.0007666     
+        "time_taken": 0.0001347
     },
     "status": 200
 }
