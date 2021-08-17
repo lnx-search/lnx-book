@@ -83,11 +83,7 @@ payload looks like:
     ],
     
     // The backend to use, choices of 'memory', 'tempdir', and 'filesystem'
-    "storage_type": {   
-        "mode": "memory",
-        // if we were using 'filesystem' then we would need to give a path.
-        // "path": "/store",
-    },  
+    "storage_type": "memory",
     
     // The actual fields for this schema.
     // NOTE: not every field defined is used to search.
