@@ -38,7 +38,7 @@ services:
       ports:
         - "8000:8000"
       volumes:
-        - "/my/dir:/lib/lnx" 
+        - "/my/dir:/etc/lnx" 
       environment:
         - AUTHORIZATION_KEY=hello
         - LOG_LEVEL=info
