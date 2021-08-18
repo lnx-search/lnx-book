@@ -28,7 +28,6 @@ therefore you spawn at least `max_concurrency` x `reader_threads` + `writer_thre
 ### Support Field Data Types
 - `string` This is similar to `text` but wont be indexed. (Supports `stored` bool)
 - `text` This is similar to `string` but will be indexed. (Supports `stored` bool)
-- `bytes` A arbitrary bytes field with given (Supports [BytesOptions](/getting_started/creating_a_index.html#bytes-options))
 - `f64` A 64 bit floating point integer field. (Supports [IntOptions](/getting_started/creating_a_index.html#int-options))
 - `i64` A 64 bit signed integer field. (Supports [IntOptions](/getting_started/creating_a_index.html#int-options))
 - `u64` A 64 bit unsigned point integer field. (Supports [IntOptions](/getting_started/creating_a_index.html#int-options))
@@ -43,20 +42,6 @@ Setting an integer as indexed will generate a posting list for each value taken 
 
 - *`fast`: 'single' or 'multi'* - Set the field as a fast field with a
 given cardinality which makes it either a single-value or multi-value field. 
-Fast fields are designed for random access.
-Access time are similar to a random lookup in an array.
-If more than one value is associated to a fast field, only the last one is kept.
-
-- `stored`: bool - Set the field as stored.
-Only the fields that are set as *stored* are persisted into the store.
-
-#### Bytes Options
-If a field is *in italic* it's optional and not required.
-
-- `indexed`: bool - Whether or not to index this field. 
-Setting an integer as indexed will generate a posting list for each value taken by the integer.
-
-- *`fast`: bool* - Set the field as a single-valued fast field. 
 Fast fields are designed for random access.
 Access time are similar to a random lookup in an array.
 If more than one value is associated to a fast field, only the last one is kept.
