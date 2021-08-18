@@ -1,3 +1,3 @@
 ## The lnx-book
 
-This the markdown book deployed on cloudflare
+This the markdown book deployed on cloudflare.
