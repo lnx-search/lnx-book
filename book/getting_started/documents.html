@@ -198,10 +198,10 @@ unique otherwise multiple docs can be deleted via this method.</p>
 <pre><code class="language-json5">{
     // Delete any document with the value 123454 for the `id` field.
     // Make sure the type of the field aligns with the specified value type. 
-    &quot;id&quot;: {&quot;type&quot;: &quot;u64&quot;, &quot;value&quot;: 123454},
+    &quot;id&quot;: {&quot;type&quot;: &quot;u64&quot;, &quot;value&quot;: [123454]},
 
     // Delete any document with the value 'bob' for the `name` field. 
-    &quot;name&quot;: {&quot;type&quot;: &quot;text&quot;, &quot;value&quot;: &quot;bob&quot;},
+    &quot;name&quot;: {&quot;type&quot;: &quot;text&quot;, &quot;value&quot;: [&quot;bob&quot;]},
 }
 </code></pre>
 <h2 id="deleting-all-documents"><a class="header" href="#deleting-all-documents">Deleting All Documents</a></h2>

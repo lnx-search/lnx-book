@@ -163,7 +163,7 @@ This is super useful for things like books etc... Wanting related items.</li>
 <p><strong>Endpoint Query Parameters</strong></p>
 <ul>
 <li><code>query</code>* - A string query which is used to search documents.</li>
-<li><code>ref_document</code>** - A document id in the form of <segment>-<id>.</li>
+<li><code>document</code>** - A document id in the form of a integer.</li>
 <li><code>mode</code> - The specified mode of the query. Out of <code>normal</code>, <code>fuzzy</code>, <code>more-like-this</code>.</li>
 <li><code>limit</code> - Limit the amount of results to return (Default: <code>20</code>)</li>
 <li><code>offset</code> - The offset to skip <code>n</code> documents before returning any. </li>
@@ -181,26 +181,111 @@ specified, we then limit it to <code>10</code> items.</p>
 <p>Our response can look something like this:</p>
 <pre><code class="language-js">{
     &quot;data&quot;: {
-        // The total amount of documents matching the query
-        &quot;count&quot;: 1,
-
-        // The results of the query, the data returned is in the format of the
-        // schema.
+        &quot;count&quot;: 4,
         &quot;hits&quot;: [
             {
                 &quot;doc&quot;: {
-                    &quot;description&quot;: [
-                        &quot;there once was a kid and yeah&quot;
+                    &quot;genres&quot;: [
+                        &quot;Action&quot;,
+                        &quot;Comedy&quot;,
+                        &quot;Fantasy&quot;
+                    ],
+                    &quot;id&quot;: [
+                        &quot;287947&quot;
+                    ],
+                    &quot;overview&quot;: [
+                        &quot;A boy is given the ability to become an adult superhero in times of need with a single magic word.&quot;
+                    ],
+                    &quot;poster&quot;: [
+                        &quot;https://image.tmdb.org/t/p/w500/xnopI5Xtky18MPhK40cZAGAOVeV.jpg&quot;
+                    ],
+                    &quot;release_date&quot;: [
+                        1553299200
                     ],
                     &quot;title&quot;: [
-                        &quot;hello, world&quot;
+                        &quot;Shazam!&quot;
                     ]
                 },
-                &quot;ref_address&quot;: &quot;1-0&quot;
+                &quot;document_id&quot;: &quot;4354052675788172051&quot;
+            },
+            {
+                &quot;doc&quot;: {
+                    &quot;genres&quot;: [
+                        &quot;Animation&quot;,
+                        &quot;Family&quot;,
+                        &quot;Adventure&quot;
+                    ],
+                    &quot;id&quot;: [
+                        &quot;166428&quot;
+                    ],
+                    &quot;overview&quot;: [
+                        &quot;As Hiccup fulfills his dream of creating a peaceful dragon utopia, Toothless’ discovery of an untamed, elusive mate draws the Night Fury away. When danger mounts at home and Hiccup’s reign as village chief is tested, both dragon and rider must make impossible decisions to save their kind.&quot;
+                    ],
+                    &quot;poster&quot;: [
+                        &quot;https://image.tmdb.org/t/p/w500/xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg&quot;
+                    ],
+                    &quot;release_date&quot;: [
+                        1546473600
+                    ],
+                    &quot;title&quot;: [
+                        &quot;How to Train Your Dragon: The Hidden World&quot;
+                    ]
+                },
+                &quot;document_id&quot;: &quot;12457370295431745695&quot;
+            },
+            {
+                &quot;doc&quot;: {
+                    &quot;genres&quot;: [
+                        &quot;Action&quot;,
+                        &quot;Adventure&quot;,
+                        &quot;Science Fiction&quot;
+                    ],
+                    &quot;id&quot;: [
+                        &quot;299537&quot;
+                    ],
+                    &quot;overview&quot;: [
+                        &quot;The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.&quot;
+                    ],
+                    &quot;poster&quot;: [
+                        &quot;https://image.tmdb.org/t/p/w500/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg&quot;
+                    ],
+                    &quot;release_date&quot;: [
+                        1551830400
+                    ],
+                    &quot;title&quot;: [
+                        &quot;Captain Marvel&quot;
+                    ]
+                },
+                &quot;document_id&quot;: &quot;14969987396162595734&quot;
+            },
+            {
+                &quot;doc&quot;: {
+                    &quot;genres&quot;: [
+                        &quot;Thriller&quot;,
+                        &quot;Action&quot;,
+                        &quot;Horror&quot;,
+                        &quot;Science Fiction&quot;
+                    ],
+                    &quot;id&quot;: [
+                        &quot;522681&quot;
+                    ],
+                    &quot;overview&quot;: [
+                        &quot;Six strangers find themselves in circumstances beyond their control, and must use their wits to survive.&quot;
+                    ],
+                    &quot;poster&quot;: [
+                        &quot;https://image.tmdb.org/t/p/w500/8Ls1tZ6qjGzfGHjBB7ihOnf7f0b.jpg&quot;
+                    ],
+                    &quot;release_date&quot;: [
+                        1546473600
+                    ],
+                    &quot;title&quot;: [
+                        &quot;Escape Room&quot;
+                    ]
+                },
+                &quot;document_id&quot;: &quot;14536447352761414553&quot;
             }
         ],
-        // The total time taken in seconds.
-        &quot;time_taken&quot;: 0.0001347
+        &quot;time_taken&quot;: 0.0005308
     },
     &quot;status&quot;: 200
 }
