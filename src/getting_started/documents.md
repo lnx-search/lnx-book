@@ -77,10 +77,10 @@ DELETE /indexes/:index_name/documents
 {
     // Delete any document with the value 123454 for the `id` field.
     // Make sure the type of the field aligns with the specified value type. 
-    "id": {"type": "u64", "value": 123454},
+    "id": {"type": "u64", "value": [123454]},
 
     // Delete any document with the value 'bob' for the `name` field. 
-    "name": {"type": "text", "value": "bob"},
+    "name": {"type": "text", "value": ["bob"]},
 }
 ```
 
