@@ -19,7 +19,7 @@ GET /indexes/:index_name/search
 
 **Endpoint Query Parameters**
 - `query`* - A string query which is used to search documents.
-- `ref_document`** - A document id in the form of <segment>-<id>.
+- `document`** - A document id in the form of a integer.
 - `mode` - The specified mode of the query. Out of `normal`, `fuzzy`, `more-like-this`.
 - `limit` - Limit the amount of results to return (Default: `20`)
 - `offset` - The offset to skip `n` documents before returning any. 
@@ -41,26 +41,111 @@ Our response can look something like this:
 ```js
 {
     "data": {
-        // The total amount of documents matching the query
-        "count": 1,
-
-        // The results of the query, the data returned is in the format of the
-        // schema.
+        "count": 4,
         "hits": [
             {
                 "doc": {
-                    "description": [
-                        "there once was a kid and yeah"
+                    "genres": [
+                        "Action",
+                        "Comedy",
+                        "Fantasy"
+                    ],
+                    "id": [
+                        "287947"
+                    ],
+                    "overview": [
+                        "A boy is given the ability to become an adult superhero in times of need with a single magic word."
+                    ],
+                    "poster": [
+                        "https://image.tmdb.org/t/p/w500/xnopI5Xtky18MPhK40cZAGAOVeV.jpg"
+                    ],
+                    "release_date": [
+                        1553299200
                     ],
                     "title": [
-                        "hello, world"
+                        "Shazam!"
                     ]
                 },
-                "ref_address": "1-0"
+                "document_id": "4354052675788172051"
+            },
+            {
+                "doc": {
+                    "genres": [
+                        "Animation",
+                        "Family",
+                        "Adventure"
+                    ],
+                    "id": [
+                        "166428"
+                    ],
+                    "overview": [
+                        "As Hiccup fulfills his dream of creating a peaceful dragon utopia, Toothless’ discovery of an untamed, elusive mate draws the Night Fury away. When danger mounts at home and Hiccup’s reign as village chief is tested, both dragon and rider must make impossible decisions to save their kind."
+                    ],
+                    "poster": [
+                        "https://image.tmdb.org/t/p/w500/xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg"
+                    ],
+                    "release_date": [
+                        1546473600
+                    ],
+                    "title": [
+                        "How to Train Your Dragon: The Hidden World"
+                    ]
+                },
+                "document_id": "12457370295431745695"
+            },
+            {
+                "doc": {
+                    "genres": [
+                        "Action",
+                        "Adventure",
+                        "Science Fiction"
+                    ],
+                    "id": [
+                        "299537"
+                    ],
+                    "overview": [
+                        "The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe."
+                    ],
+                    "poster": [
+                        "https://image.tmdb.org/t/p/w500/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg"
+                    ],
+                    "release_date": [
+                        1551830400
+                    ],
+                    "title": [
+                        "Captain Marvel"
+                    ]
+                },
+                "document_id": "14969987396162595734"
+            },
+            {
+                "doc": {
+                    "genres": [
+                        "Thriller",
+                        "Action",
+                        "Horror",
+                        "Science Fiction"
+                    ],
+                    "id": [
+                        "522681"
+                    ],
+                    "overview": [
+                        "Six strangers find themselves in circumstances beyond their control, and must use their wits to survive."
+                    ],
+                    "poster": [
+                        "https://image.tmdb.org/t/p/w500/8Ls1tZ6qjGzfGHjBB7ihOnf7f0b.jpg"
+                    ],
+                    "release_date": [
+                        1546473600
+                    ],
+                    "title": [
+                        "Escape Room"
+                    ]
+                },
+                "document_id": "14536447352761414553"
             }
         ],
-        // The total time taken in seconds.
-        "time_taken": 0.0001347
+        "time_taken": 0.0005308
     },
     "status": 200
 }
