@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - Getting started with lnx</title>
+        <title>Optimising - Getting started with lnx</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/installing.html"><strong aria-hidden="true">1.1.</strong> Installing</a></li><li class="chapter-item expanded "><a href="getting_started/running.html"><strong aria-hidden="true">1.2.</strong> Running</a></li><li class="chapter-item expanded "><a href="getting_started/indexes.html"><strong aria-hidden="true">1.3.</strong> Indexes</a></li><li class="chapter-item expanded "><a href="getting_started/index_transactions.html"><strong aria-hidden="true">1.4.</strong> Index Transactions</a></li><li class="chapter-item expanded "><a href="getting_started/documents.html"><strong aria-hidden="true">1.5.</strong> Documents</a></li><li class="chapter-item expanded "><a href="getting_started/searching.html"><strong aria-hidden="true">1.6.</strong> Searching An Index</a></li><li class="chapter-item expanded "><a href="getting_started/auth.html"><strong aria-hidden="true">1.7.</strong> Securing Your System</a></li><li class="chapter-item expanded "><a href="getting_started/next_steps.html"><strong aria-hidden="true">1.8.</strong> Next Steps</a></li></ol></li><li class="chapter-item expanded "><a href="optimise.html"><strong aria-hidden="true">2.</strong> Optimising</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="optimising/understanding.html"><strong aria-hidden="true">2.1.</strong> Understanding Your Workload</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/installing.html"><strong aria-hidden="true">1.1.</strong> Installing</a></li><li class="chapter-item expanded "><a href="getting_started/running.html"><strong aria-hidden="true">1.2.</strong> Running</a></li><li class="chapter-item expanded "><a href="getting_started/indexes.html"><strong aria-hidden="true">1.3.</strong> Indexes</a></li><li class="chapter-item expanded "><a href="getting_started/index_transactions.html"><strong aria-hidden="true">1.4.</strong> Index Transactions</a></li><li class="chapter-item expanded "><a href="getting_started/documents.html"><strong aria-hidden="true">1.5.</strong> Documents</a></li><li class="chapter-item expanded "><a href="getting_started/searching.html"><strong aria-hidden="true">1.6.</strong> Searching An Index</a></li><li class="chapter-item expanded "><a href="getting_started/auth.html"><strong aria-hidden="true">1.7.</strong> Securing Your System</a></li><li class="chapter-item expanded "><a href="getting_started/next_steps.html"><strong aria-hidden="true">1.8.</strong> Next Steps</a></li></ol></li><li class="chapter-item expanded "><a href="optimise.html" class="active"><strong aria-hidden="true">2.</strong> Optimising</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="optimising/understanding.html"><strong aria-hidden="true">2.1.</strong> Understanding Your Workload</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,44 +143,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p align="center">
-  <img width="40%" src="https://github.com/ChillFish8/lnx/raw/master/assets/logo.png" alt="Lust Logo">
-</p>
-<h1 id=""><a class="header" href="#"></a></h1>
-<p align="center">
-  <a href="https://github.com/ChillFish8/lnx/stargazers"><img src="https://img.shields.io/github/stars/ChillFish8/lnx"/></a>
-  <a href="hhttps://github.com/ChillFish8/lnx/issues"><img src="https://img.shields.io/github/issues/ChillFish8/lnx"/></a>
-  <a href="https://github.com/ChillFish8/lnx/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ChillFish8/lnx"/></a>
-  <a href="https://book.lnx.rs"><img src="https://img.shields.io/badge/Book-alive-sucess"/></a>
-</p>
-<p align="center">
-    <a href="getting_started/installing.html">Getting Started</a>
-    |
-    <a href="/optimising.html">Optimising</a>
-</p>
-<p align="center">An ultra-fast, adaptable deployment of the tantivy search engine via REST.</p>
-<h3 id="-standing-on-the-shoulders-of-giants"><a class="header" href="#-standing-on-the-shoulders-of-giants">🌟 Standing On The Shoulders of Giants</a></h3>
-<p>lnx is built to not re-invent the wheel, it stands on top of the <a href="https://tokio.rs"><strong>tokio-rs</strong></a> work-stealing runtime, <a href="https://github.com/tokio-rs/axum"><strong>axum</strong></a> a lightweight abstraction over <a href="https://github.com/hyperium/hyper"><strong>hyper-rs</strong></a> combined with the raw compute power of the <a href="https://github.com/tantivy-search/tantivy"><strong>tantivy search engine</strong></a>.</p>
-<p>Together this allows lnx to offer millisecond indexing on tens of thousands of document inserts at once (No more waiting around for things to get indexed!), Per index transactions and the ability to process searches like it's just another lookup on the hashtable 😲</p>
-<h3 id="-features"><a class="header" href="#-features">✨ Features</a></h3>
-<p>lnx although very new offers a wide range of features thanks to the ecosystem it stands on.</p>
-<ul>
-<li>🤓 <strong>Complex Query Parser.</strong></li>
-<li>❤️ <strong>Typo tolerant fuzzy queries.</strong></li>
-<li>🔥 <strong>More-Like-This queries.</strong></li>
-<li>Order by fields.</li>
-<li><em>Fast</em> indexing.</li>
-<li><em>Fast</em> Searching.</li>
-<li>Several Options for fine grain performance tuning.</li>
-<li>Multiple storage backends available for testing and developing.</li>
-</ul>
+                        <h1 id="optimising"><a class="header" href="#optimising">Optimising</a></h1>
+<p>Part of what makes lnx so powerful and performance is it's fine grain thread
+pool controls, this lets you adjust where your system resources go on a runtime
+and per index basis.</p>
+<h3 id="why-do-i-want-to-do-this"><a class="header" href="#why-do-i-want-to-do-this">Why Do I Want To Do This?</a></h3>
+<p>Thread pools are expensive, the more threads you allocate the higher the
+general CPU and memory usage is while this is generally a minor difference
+it can make a significant difference if you naively set the limits.</p>
+<p>For example if we have a server with <code>12</code> logical cpus (threads) available
+and we want to index a large dataset we want to allocate as many threads
+as we can to the index writer. However, if we allocate <code>12</code> threads we 
+must be aware that this will <strong><em>negatively affect our readers</em></strong> when we
+start adding docs.<br/>
+This is because our program can (essentially) only do 12 things in parallel 
+MAX, so when we start adding more threads the OS will start switching resources
+across the threads so we will naturally see a decrease in performance across 
+all our threads.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="getting_started/next_steps.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
-                                                    <a rel="next" href="getting_started/installing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="optimising/understanding.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -190,8 +179,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="getting_started/next_steps.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                                    <a rel="next" href="getting_started/installing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="optimising/understanding.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
