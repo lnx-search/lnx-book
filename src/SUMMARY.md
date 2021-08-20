@@ -10,4 +10,5 @@
     - [Securing Your System](getting_started/auth.md)
     - [Next Steps](getting_started/next_steps.md)
  
-- [Optimising](optimising.md)
+- [Optimising](optimise.md)
+    - [Understanding Your Workload](optimising/understanding.md)
