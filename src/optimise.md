@@ -17,4 +17,12 @@ This is because our program can (essentially) only do 12 things in parallel
 MAX, so when we start adding more threads the OS will start switching resources
 across the threads so we will naturally see a decrease in performance across 
 all our threads.
+
+### WARNING
+More threads does not always mean better, in this case high concurrency and
+more reader threads does not make things faster, in some / a lot of cases
+not having a balanced setup can lead to far worse performance overall.
+
+There are cases where if you spawn too many threads for your system to handle
+and try to put load of them, the system can segfault.
  
