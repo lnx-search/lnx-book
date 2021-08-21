@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Understanding Your Workload - Getting started with lnx</title>
+        <title>Index Transactions - Getting started with lnx</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installing.html"><strong aria-hidden="true">1.1.</strong> Installing</a></li><li class="chapter-item expanded "><a href="../getting_started/running.html"><strong aria-hidden="true">1.2.</strong> Running</a></li><li class="chapter-item expanded "><a href="../getting_started/indexes.html"><strong aria-hidden="true">1.3.</strong> Indexes</a></li><li class="chapter-item expanded "><a href="../getting_started/index_transactions.html"><strong aria-hidden="true">1.4.</strong> Index Transactions</a></li><li class="chapter-item expanded "><a href="../getting_started/documents.html"><strong aria-hidden="true">1.5.</strong> Documents</a></li><li class="chapter-item expanded "><a href="../getting_started/searching.html"><strong aria-hidden="true">1.6.</strong> Searching An Index</a></li><li class="chapter-item expanded "><a href="../getting_started/auth.html"><strong aria-hidden="true">1.7.</strong> Securing Your System</a></li><li class="chapter-item expanded "><a href="../getting_started/next_steps.html"><strong aria-hidden="true">1.8.</strong> Next Steps</a></li></ol></li><li class="chapter-item expanded "><a href="../optimise.html"><strong aria-hidden="true">2.</strong> Optimising</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../optimising/understanding.html" class="active"><strong aria-hidden="true">2.1.</strong> Understanding Your Workload</a></li></ol></li><li class="chapter-item expanded "><a href="../cli.html"><strong aria-hidden="true">3.</strong> lnx CLI</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installing.html"><strong aria-hidden="true">1.1.</strong> Installing</a></li><li class="chapter-item expanded "><a href="../getting_started/running.html"><strong aria-hidden="true">1.2.</strong> Running</a></li><li class="chapter-item expanded "><a href="../getting_started/indexes.html"><strong aria-hidden="true">1.3.</strong> Indexes</a></li><li class="chapter-item expanded "><a href="../getting_started/index_transactions.html" class="active"><strong aria-hidden="true">1.4.</strong> Index Transactions</a></li><li class="chapter-item expanded "><a href="../getting_started/documents.html"><strong aria-hidden="true">1.5.</strong> Documents</a></li><li class="chapter-item expanded "><a href="../getting_started/searching.html"><strong aria-hidden="true">1.6.</strong> Searching An Index</a></li><li class="chapter-item expanded "><a href="../getting_started/auth.html"><strong aria-hidden="true">1.7.</strong> Securing Your System</a></li><li class="chapter-item expanded "><a href="../getting_started/next_steps.html"><strong aria-hidden="true">1.8.</strong> Next Steps</a></li></ol></li><li class="chapter-item expanded "><a href="../optimise.html"><strong aria-hidden="true">2.</strong> Optimising</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../optimising/understanding.html"><strong aria-hidden="true">2.1.</strong> Understanding Your Workload</a></li></ol></li><li class="chapter-item expanded "><a href="../cli.html"><strong aria-hidden="true">3.</strong> lnx CLI</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,18 +143,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="understanding-your-workload"><a class="header" href="#understanding-your-workload">Understanding Your Workload</a></h1>
-<p><em>todo :)</em></p>
+                        <h1 id="transactions"><a class="header" href="#transactions">Transactions</a></h1>
+<p>Transactions are one of the most important things in lnx, they control what data is seen by
+the reader and what data is actually fully processed and saved.</p>
+<p>The core concept of the transactions work on the same basis of tradition database transactions
+with a one major difference:</p>
+<ul>
+<li>
+<p>There <em>should</em> only ever be <strong>ONE</strong> system interacting with a writer for a specific index at a time.
+The system processes writes in single a queue, so if one system adds a document and another commits
+then the document will be finalized and flushed to disk.</br> 
+<strong>It is highly recommended to wrap the writing endpoints in a lock</strong></p>
+</li>
+<li>
+<p>Transactions are implicit vs explicit meaning you dont declare a transaction
+you simple call commit and rollback respectively which apply their relevant affects
+on writes made <strong>since the last commit</strong> once something is committed it cannot be rolled back.</p>
+</li>
+</ul>
+<h3 id="transaction-endpoints"><a class="header" href="#transaction-endpoints">Transaction Endpoints</a></h3>
+<p>Commits any recent changes since the last commit.
+This will finalise any changes and flush to disk.</p>
+<pre><code>POST /indexes/:index_name/commit
+</code></pre>
+<p>Reverts any recent changes since the last commit.</p>
+<pre><code>POST /indexes/:index_name/rollback
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../optimise.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../getting_started/indexes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../cli.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../getting_started/documents.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -164,11 +188,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../optimise.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../getting_started/indexes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../cli.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../getting_started/documents.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
