@@ -747,7 +747,27 @@ not having a balanced setup can lead to far worse performance overall.</p>
 <p>There are cases where if you spawn too many threads for your system to handle
 and try to put load of them, the system can segfault.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="understanding-your-workload"><a class="header" href="#understanding-your-workload">Understanding Your Workload</a></h1>
-<p><em>todo :)</em></p>
+<p>Not every set of data is going to have the same optimum configuration, there
+are a few points you probably want to be aware of when choosing your settings.</p>
+<h3 id="large-datasets-millions-of-documents"><a class="header" href="#large-datasets-millions-of-documents">Large Datasets (millions+ of documents)</a></h3>
+<p>Searching large datasets can benefit from having a larger number of reader
+threads and a lower max concurrency set, having a low number of reader threads
+and a high concurrency has the negative affect of trying to run many searches
+at once very slowly vs a few searches very quickly. </p>
+<p>There is also a hard capped limit on how much your system can actually handle.
+If you set the max concurrency beyond what your system can handle you will
+seg fault at high loads which is a un-recoverable error. </p>
+<h3 id="small-datasets-thousands-of-documents"><a class="header" href="#small-datasets-thousands-of-documents">Small Datasets (thousands+ of documents)</a></h3>
+<p>Smaller datasets often cannot make good use of a larger number of reader threads,
+this is because the data is not split into enough segments to make full use of
+the parallel computation.</p>
+<p>Often with smaller datasets you're better having a higher concurrency and a lower
+number of reader threads.</p>
+<p>For example, the movies.json dataset as part of the demo app is roughly most
+optimised at 1 or 2 reader threads and <code>n * 3</code> max concurrency where <code>n</code> is the
+number of cpu cores on the machine. 
+This can still change though depending on the clock speed of your CPU so still 
+benchmark and test before sticking with a configuration.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-lnx-cli"><a class="header" href="#the-lnx-cli">The lnx CLI</a></h1>
 <p>This is a useful tool when testing for performance and also exploring
 lnx itself, you can currently run benchmarks or host a demo app with this
