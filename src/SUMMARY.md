@@ -13,4 +13,4 @@
 - [Optimising](optimise.md)
     - [Understanding Your Workload](optimising/understanding.md)
     
-- [lnx CLI](optimise.md)
+- [lnx CLI](cli.md)
