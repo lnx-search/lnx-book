@@ -70,6 +70,15 @@ payload looks like:
     // The backend to use, choices of 'memory', 'tempdir', and 'filesystem'
     "storage_type": "memory",
     
+    // Uses the fast-fuzzy pre-compute optimisations, this is much faster but requires
+    // additional memory and requires it being enabled in the server itself
+    // via `--enable-fast-fuzzy`
+    "use_fast_fuzzy": true,
+
+    // If true this will strip out stop words e.g. `the` from the search query if
+    // it contains 1 or more non-stop words. (Only applied to fast-fuzzy)
+    "strip_stop_words": true,
+    
     // The actual fields for this schema.
     // NOTE: not every field defined is used to search.
     "fields": {   
