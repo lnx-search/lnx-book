@@ -53,7 +53,8 @@ Not waiting can quickly add a lot of load on the server which may be un-desirabl
 ```js
 [
     {
-        "title": ["Hello, World"],
+        // Did you know you can do multi-value or single value docs?
+        "title": "Hello, World",
         "description": ["Welcome to the next generation system."]
     },
     {
@@ -68,6 +69,9 @@ Not waiting can quickly add a lot of load on the server which may be un-desirabl
 Docs can only be deleted via terms, it's up to you to make sure a given term is
 unique otherwise multiple docs can be deleted via this method.
 
+NOTE: This only works with fast fields, so it's a good idea to make a unique
+id or use the document_id via the `_id` field.
+
 ```
 DELETE /indexes/:index_name/documents
 ```
@@ -77,10 +81,7 @@ DELETE /indexes/:index_name/documents
 {
     // Delete any document with the value 123454 for the `id` field.
     // Make sure the type of the field aligns with the specified value type. 
-    "id": {"type": "u64", "value": [123454]},
-
-    // Delete any document with the value 'bob' for the `name` field. 
-    "name": {"type": "text", "value": ["bob"]},
+    "id": 123454,
 }
 ```
 
