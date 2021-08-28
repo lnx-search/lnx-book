@@ -180,7 +180,8 @@ useful for client backpressure waiting for when to send more documents or not.</
 <h4 id="example-body-multiple"><a class="header" href="#example-body-multiple">Example Body (Multiple)</a></h4>
 <pre><code class="language-js">[
     {
-        &quot;title&quot;: [&quot;Hello, World&quot;],
+        // Did you know you can do multi-value or single value docs?
+        &quot;title&quot;: &quot;Hello, World&quot;,
         &quot;description&quot;: [&quot;Welcome to the next generation system.&quot;]
     },
     {
@@ -192,16 +193,15 @@ useful for client backpressure waiting for when to send more documents or not.</
 <h2 id="deleting-documents"><a class="header" href="#deleting-documents">Deleting Documents</a></h2>
 <p>Docs can only be deleted via terms, it's up to you to make sure a given term is
 unique otherwise multiple docs can be deleted via this method.</p>
+<p>NOTE: This only works with fast fields, so it's a good idea to make a unique
+id or use the document_id via the <code>_id</code> field.</p>
 <pre><code>DELETE /indexes/:index_name/documents
 </code></pre>
 <h3 id="json-payload"><a class="header" href="#json-payload">JSON Payload</a></h3>
 <pre><code class="language-json5">{
     // Delete any document with the value 123454 for the `id` field.
     // Make sure the type of the field aligns with the specified value type. 
-    &quot;id&quot;: {&quot;type&quot;: &quot;u64&quot;, &quot;value&quot;: [123454]},
-
-    // Delete any document with the value 'bob' for the `name` field. 
-    &quot;name&quot;: {&quot;type&quot;: &quot;text&quot;, &quot;value&quot;: [&quot;bob&quot;]},
+    &quot;id&quot;: 123454,
 }
 </code></pre>
 <h2 id="deleting-all-documents"><a class="header" href="#deleting-all-documents">Deleting All Documents</a></h2>
