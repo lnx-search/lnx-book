@@ -55,7 +55,7 @@ Not waiting can quickly add a lot of load on the server which may be un-desirabl
     {
         // Did you know you can do multi-value or single value docs?
         "title": "Hello, World",
-        "description": ["Welcome to the next generation system."]
+        "description": "Welcome to the next generation system."
     },
     {
         "title": ["Hello, World 2 "],
